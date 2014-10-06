@@ -1,0 +1,13 @@
+div.go_top {
+    background-color: #808080;
+    border-radius: 0.5em;
+    position: fixed;
+    right: 24px;
+    bottom: 64px;
+    opacity: 0.8;
+}
+img {
+    max-width: 750px;
+    vertical-align: middle;
+    border-width: 0px;
+}
