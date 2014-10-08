@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>入门级模板</title>
+    <meta name="description" content="Creating Modal Window with Bootstrap">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="css/starter-template.css" rel="stylesheet">
+    <link href="css/signin.css" rel="stylesheet">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jqScroll.js"></script>
+
+<style type="text/css">
+/*解决IE6闪动问题 start*/
+*html{background-image:url(about:blank);background-attachment:fixed;}
+/* toTop */
+.toTop{width:50px;height:50px;background:#CCC;border:1px solid #999;padding:0px;cursor:pointer;position:fixed;right:40px;bottom:140px;}
+*html .toTop{position:absolute;bottom:auto;top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));margin-bottom:80px;}
+
+</style>
+<script type="text/javascript"> 
+$(document).ready(function(){
+    /*返回顶部*/
+    $('#roll_top').hide();
+    $(window).scroll(function () {
+        if ($(window).scrollTop() > 20) {
+            $('#roll_top').fadeIn(400);//当滑动栏向下滑动时，按钮渐现的时间
+        } else {
+            $('#roll_top').fadeOut(0);//当页面回到顶部第一屏时，按钮渐隐的时间
+        }
+    });
+    $('#roll_top').click(function () {
+        $('html,body').animate({
+            scrollTop : '0px'
+        }, 300);//返回顶部所用的时间 返回顶部也可调用goto()函数
+    });
+});
+function goto(selector){
+    $.scrollTo ( selector , 1000);  
+}
+function checkPasswords() {
+        var pass1 = document.getElementById("password1");
+        var pass2 = document.getElementById("password2");
+
+        if (pass1.value != pass2.value)
+            pass1.setCustomValidity("两次输入的密码不匹配");
+        else
+            pass1.setCustomValidity("");
+}
+</script>
+    
+</head>
+<body>
+
+     
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="search" class="form-control" placeholder="Search...">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+            <!-- <form class='navbar-form navbar-right'>
+                
+                <input type="text" class="form-control" placeholder="Search...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Go!</button>
+                  </span>
+
+
+            </form> -->
+            <div class="navbar-form navbar-right">
+                  <button class="btn btn-success" data-toggle="modal" data-target="#login">
+                         log in
+                    </button>
+                    <button class="btn btn-success" data-toggle="modal" data-target="#sign">
+                            sign up
+                    </button>
+            </div>
+            
+            
+
+
+            
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="container">
+    <br />
+    <img src="images/logo.png" class="img-responsive img-rounded" alt="Responsive image">
+    
+    <div class="starter-template">
+        <h1>Bootstrap starter template</h1>
+        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <tr class="active"><th>Roll</th><th>Name</th><th>Marks</th></tr>
+            <tr class="success"><td>103</td><td>Chirag</td><td>85</td></tr>
+            <tr class="warning"><td>102</td><td>Naman</td><td>85</td></tr>
+            <tr class="info"><td>101</td><td>John</td><td>85</td></tr>
+        </table>
+    </div>
+
+
+
+    <form role="form">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputFile">File input</label>
+            <input type="file" id="exampleInputFile">
+            <p class="help-block">Example block-level help text here.</p>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox"> Check me out
+            </label>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+
+
+    <input type="text" class="form-control" placeholder="Text input">
+    <span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+
+    <textarea class="form-control" rows="3" placeholder="text input"></textarea>
+
+    <label class="checkbox-inline">
+        <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+    </label>
+    <label class="checkbox-inline">
+        <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+    </label>
+    <label class="checkbox-inline">
+        <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+    </label>
+    <br>
+    <label class="radio-inline">
+        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+    </label>
+    <label class="radio-inline">
+        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+    </label>
+    <label class="radio-inline">
+        <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
+    </label>
+    <br>
+    <br>
+    <div class="form-group has-success">
+        <label class="control-label" for="inputSuccess1">Input with success</label>
+        <input type="text" class="form-control" id="inputSuccess1">
+    </div>
+    <div class="form-group has-warning">
+        <label class="control-label" for="inputWarning1">Input with warning</label>
+        <input type="text" class="form-control" id="inputWarning1">
+    </div>
+    <div class="form-group has-error">
+        <label class="control-label" for="inputError1">Input with error</label>
+        <input type="text" class="form-control" id="inputError1">
+    </div>
+
+    <br>
+
+    <blockquote>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+        <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+    </blockquote>
+    <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Tooltip on left">Tooltip on left</button>
+
+<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Tooltip on top</button>
+
+<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">Tooltip on bottom</button>
+
+<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Tooltip on right">Tooltip on right</button>
+
+<div class="row">
+  <div class="col-lg-6">
+    <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+      <input type="text" class="form-control">
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+  <div class="col-lg-6">
+    <div class="input-group">
+      <input type="text" class="form-control">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
+ 
+
+</div><!-- /.container -->
+  <!-- Modal -->
+    <div class="modal fade in" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+        <div class="form-dialog modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Please log in</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-signin" role="form" autocomplete="on">
+                        <input type="email" class="form-control" placeholder="Email address" required autofocus>
+                        <input type="password" class="form-control" placeholder="Password" autocomplete="off" required>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="remember-me"> Remember me
+                            </label>
+                        </div>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="sign" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="form-dialog modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Please sign up</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-signin" role="form" autocomplete="on">
+                        <input type="email" class="form-control" placeholder="Email address" required autofocus>
+                        <input type="password" id="password1" class="form-control" placeholder="Password" autocomplete="off" onchange="checkPasswords()" required>
+                        <input type="password" id="password2" class="form-control" placeholder="Password Confirm" autocomplete="off" onchange="checkPasswords()" required>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="remember-me"> Remember me
+                            </label>
+                        </div>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer" style="background:#303030">
+        <div class="container">
+            <p align='center'><font color='white'>Copyright &copy; 2014 DengrongGuan. All rights reserved.</font> </p>
+        </div>
+                
+
+    </footer>
+    <!-- <div style="display:none;" class="back-to" id="toolBackTop">
+        <a title="返回顶部" onclick="window.scrollTo(0,0);return false;" href="#top" class="back-top">返回顶部</a>
+    </div> -->
+    <div class="toTop" id="roll_top">
+            <img height="50" width="50" src="images/top_button.png">
+    </div>
+
+    
+</body>
+</html>
